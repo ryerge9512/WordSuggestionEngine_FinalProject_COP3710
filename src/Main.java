@@ -14,8 +14,11 @@ public class Main {
   public static void main(String[] args) throws IOException {
 
     String filePath =
-        "C:\\Users\\Owner\\Desktop\\FGCU\\Spring_2020\\IntroToDataEngineering"
-            + "\\WordSuggestionEngine_FinalProject_COP3710\\src\\messages.txt";
+            "/Users/ryanyerge/Documents/FGCU/WordSuggestionEngine_FinalProject_COP3710/" +
+                    "src/messages.txt";
+
+//        "C:\\Users\\Owner\\Desktop\\FGCU\\Spring_2020\\IntroToDataEngineering"
+//            + "\\WordSuggestionEngine_FinalProject_COP3710\\src\\messages.txt";
 
     MessageStream messages = new MessageStream(filePath);
     List<String> messageWords = messages.getMessageWords();
