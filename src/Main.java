@@ -20,7 +20,7 @@ public class Main {
 //        "C:\\Users\\Owner\\Desktop\\FGCU\\Spring_2020\\IntroToDataEngineering"
 //            + "\\WordSuggestionEngine_FinalProject_COP3710\\src\\messages.txt";
 
-    MessageStream messages = new MessageStream(filePath);
+    Tokenizer messages = new Tokenizer(filePath);
     List<String> messageWords = messages.getMessageWords();
     AffinityWords analysis = new AffinityWords(messageWords);
 

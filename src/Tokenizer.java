@@ -7,18 +7,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class MessageStream {
+public class Tokenizer {
 
-  private Stream<String> messageLines;
-  private List<String> messageWords;
+    private List<String> messageWords;
 
   /**
-   * Constructor checks if path is valid and then sends to createStrean().
+   * Constructor checks if path is valid and then sends to createStream().
    *
    * @param filePath pathname of file location.
    * @throws IOException thrown if path is invalid.
    */
-  protected MessageStream(String filePath) throws IOException {
+  protected Tokenizer(String filePath) throws IOException {
 
     Path messageFile;
 
@@ -41,7 +40,7 @@ public class MessageStream {
   protected void createStream(Path messageFile) throws IOException {
 
     try {
-      messageLines = Files.lines(messageFile).filter(curLine -> !curLine.isBlank());
+        Stream<String> messageLines = Files.lines(messageFile).filter(curLine -> !curLine.isBlank());
       createList(messageLines);
 
     } catch (IOException io) {
