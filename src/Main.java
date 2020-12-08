@@ -21,15 +21,15 @@ public class Main {
 //            + "\\WordSuggestionEngine_FinalProject_COP3710\\src\\messages.txt";
 
     Tokenizer messages = new Tokenizer(filePath);
-    List<String> messageWords = messages.getMessageWords();
-    AffinityWords analysis = new AffinityWords(messageWords);
+    List<String> tokens = messages.getTokens();
+    Vectorizer analysis = new Vectorizer(tokens);
 
     Scanner sc = new Scanner(System.in);
     System.out.println("Enter a word: ");
 
     String input = sc.nextLine();
 
-    DisplayWords show = new DisplayWords(analysis, input);
-    show.showWords();
+    WordGenerator suggestedWords = new WordGenerator(analysis, input);
+    suggestedWords.showWords();
   }
 }

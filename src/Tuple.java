@@ -1,12 +1,12 @@
-public class WordEngine {
+public class Tuple {
 
   private double confidence;
   private double support;
-  private String chosenWord;
+  private String targetWord;
   private String suggestedWord;
 
-  public WordEngine(String chosenWord, String suggestedWord, double confidence, double support) {
-    this.chosenWord = chosenWord;
+  public Tuple(String targetWord, String suggestedWord, double confidence, double support) {
+    this.targetWord = targetWord;
     this.suggestedWord = suggestedWord;
     this.confidence = confidence;
     this.support = support;
@@ -16,8 +16,8 @@ public class WordEngine {
     return support;
   }
 
-  protected String getChosenWord() {
-    return chosenWord;
+  protected String getTargetWord() {
+    return targetWord;
   }
 
   protected String getSuggestedWord() {

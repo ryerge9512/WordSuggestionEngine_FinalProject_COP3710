@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 public class Tokenizer {
 
-    private List<String> messageWords;
+    private List<String> tokens;
 
   /**
    * Constructor checks if path is valid and then sends to createStream().
@@ -41,7 +41,7 @@ public class Tokenizer {
 
     try {
         Stream<String> messageLines = Files.lines(messageFile).filter(curLine -> !curLine.isBlank());
-      createList(messageLines);
+      createTokens(messageLines);
 
     } catch (IOException io) {
       io.printStackTrace();
@@ -50,12 +50,12 @@ public class Tokenizer {
   }
 
   /**
-   * List is generated from Stream.
+   * Tokens are generated from Stream and put into a List.
    *
    * @param messageLines incoming Stream to be put into a List.
    */
-  protected void createList(Stream<String> messageLines) {
-    messageWords =
+  protected void createTokens(Stream<String> messageLines) {
+    tokens =
         messageLines
             .map(String::toLowerCase)
             .map(curLine -> curLine.split("\\s+"))
@@ -63,17 +63,17 @@ public class Tokenizer {
             .collect(Collectors.toList());
   }
 
-  /** For testing purposes, the List is viewed from this method. */
-  protected void showList() {
-    messageWords.forEach(System.out::println);
+  /** For testing purposes, the tokens are viewed from this method. */
+  protected void showTokens() {
+    tokens.forEach(System.out::println);
   }
 
   /**
-   * Returns generated list.
+   * Returns generated list of preprocessed tokens.
    *
-   * @return List to have AA performed.
+   * @return List of tokens to have AA performed.
    */
-  protected List<String> getMessageWords() {
-    return messageWords;
+  protected List<String> getTokens() {
+    return tokens;
   }
 }
