@@ -10,7 +10,7 @@ public class WordGenerator {
    * @param analysis WordEngine objects returned from AA.
    * @param input User input collected in console.
    */
-  protected WordGenerator(Vectorizer analysis, String input) {
+  public WordGenerator(Vectorizer analysis, String input) {
     final ArrayList<Tuple> words = analysis.getSuggestedWords();
     final int MAX_SUGGESTED_WORDS = 3;
     int i = 0;
@@ -30,7 +30,7 @@ public class WordGenerator {
   }
 
   /** Suggested words are then displayed in the console. */
-  protected void showWords() {
+  public void showWords() {
     System.out.println("Your suggested words are: ");
     for (String word : suggestWords) {
       System.out.println(word);

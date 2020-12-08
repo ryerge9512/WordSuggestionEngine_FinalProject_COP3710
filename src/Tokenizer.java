@@ -11,13 +11,17 @@ public class Tokenizer {
 
     private List<String> tokens;
 
+    Tokenizer() {
+      System.out.println("Nothing to tokenize!");
+    }
+
   /**
    * Constructor checks if path is valid and then sends to createStream().
    *
    * @param filePath pathname of file location.
    * @throws IOException thrown if path is invalid.
    */
-  protected Tokenizer(String filePath) throws IOException {
+  public Tokenizer(String filePath) throws IOException {
 
     Path messageFile;
 
@@ -37,7 +41,7 @@ public class Tokenizer {
    * @param messageFile Stream to be transformed into a List.
    * @throws IOException thrown if path is invalid.
    */
-  protected void createStream(Path messageFile) throws IOException {
+  private void createStream(Path messageFile) throws IOException {
 
     try {
         Stream<String> messageLines = Files.lines(messageFile).filter(curLine -> !curLine.isBlank());
@@ -54,7 +58,7 @@ public class Tokenizer {
    *
    * @param messageLines incoming Stream to be put into a List.
    */
-  protected void createTokens(Stream<String> messageLines) {
+  private void createTokens(Stream<String> messageLines) {
     tokens =
         messageLines
             .map(String::toLowerCase)
@@ -73,7 +77,7 @@ public class Tokenizer {
    *
    * @return List of tokens to have AA performed.
    */
-  protected List<String> getTokens() {
+ public List<String> getTokens() {
     return tokens;
   }
 }

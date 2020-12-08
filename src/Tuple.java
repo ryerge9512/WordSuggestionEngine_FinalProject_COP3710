@@ -5,7 +5,7 @@ public class Tuple {
   private String targetWord;
   private String suggestedWord;
 
-  public Tuple(String targetWord, String suggestedWord, double confidence, double support) {
+  Tuple(String targetWord, String suggestedWord, double confidence, double support) {
     this.targetWord = targetWord;
     this.suggestedWord = suggestedWord;
     this.confidence = confidence;
@@ -16,11 +16,11 @@ public class Tuple {
     return support;
   }
 
-  protected String getTargetWord() {
+  String getTargetWord() {
     return targetWord;
   }
 
-  protected String getSuggestedWord() {
+  String getSuggestedWord() {
     return suggestedWord;
   }
 }

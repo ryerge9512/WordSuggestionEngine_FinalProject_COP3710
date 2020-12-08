@@ -15,7 +15,11 @@ public class Vectorizer {
   private Map<String, Integer> allPairs = new HashMap<>();
   private ArrayList<Tuple> suggestedWords = new ArrayList();
 
-  public Vectorizer(List<String> tokens) {
+ Vectorizer() {
+    System.out.println("Nothing to Vectorize here!!");
+  }
+
+ public Vectorizer(List<String> tokens) {
     createUnigram(tokens);
   }
 
@@ -24,7 +28,7 @@ public class Vectorizer {
    *
    * @param tokens List to be put into bag.
    */
-  protected void createUnigram(List<String> tokens) {
+  private void createUnigram(List<String> tokens) {
     for (String word : tokens) {
       bag.merge(word, 1, Integer::sum);
     }
@@ -36,7 +40,7 @@ public class Vectorizer {
    *
    * @param tokens List of words to be processed.
    */
-  protected void createBigram(List<String> tokens) {
+  private void createBigram(List<String> tokens) {
     for (int i = 1; i < tokens.size(); i++) {
       bgrams.merge(
           new HashSet<>(Arrays.asList(tokens.get(i - 1), tokens.get(i))),
@@ -48,7 +52,7 @@ public class Vectorizer {
   }
 
   /** All pairs that contain words from bag are mapped. */
-  protected void createPairMapping() {
+  private void createPairMapping() {
     for (String word : bag.keySet()) {
       for (Set<String> wordPairs : bgrams.keySet()) {
         List<String> pairings = wordPairs.stream().collect(Collectors.toList());
@@ -64,7 +68,7 @@ public class Vectorizer {
   /**
    * Confidence and Support levels are calculated for each targetWord and suggestedWord Tuple.
    */
-  protected void doAffinityAnalysis() {
+  private void doAffinityAnalysis() {
     final int TARGET_WORD = 1;
     final int SUGGESTED_WORD = 0;
     final double TARGET_SUPPORT = 0.65;
@@ -90,7 +94,7 @@ public class Vectorizer {
    *
    * @return Returns ArrayList of WordEngine objects containing suggested words.
    */
-  protected ArrayList<Tuple> getSuggestedWords() {
+  public ArrayList<Tuple> getSuggestedWords() {
     return suggestedWords;
   }
 }
